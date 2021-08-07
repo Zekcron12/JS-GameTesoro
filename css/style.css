@@ -1,0 +1,194 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  /* variables */
+  /* sb: sombra  // cp: cuerpo // ep: elementos del cuerpo */
+  --sb-box-shadow: -7px -7px 10px 0px rgba(255, 255, 255, 0.05),
+        -4px -4px 5px 0px rgba(255, 255, 255, 0.05),
+        7px 7px 10px 0px rgba(0, 0, 0, 0.5),
+        4px 4px 5px 0px rgba(0, 0, 0, 0.5),
+        inset 0px 5px 30px 10px rgba(255, 255, 255, 0.05),
+        inset 0px 5px 30px 10px rgba(255, 255, 255, 0.05),
+        inset 0px 5px 30px 10px rgba(255, 255, 255, 0.05),
+        inset 0px 5px 30px 10px rgba(0, 0, 0, 0.5);
+}
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+  background: rgb(170,66,74);
+  background: radial-gradient(circle, rgba(170,66,74,1) 0%, rgba(40,0,3,1) 100%);
+}
+.title-principal {
+	font-size: 30px;
+	font-weight: 900;
+	letter-spacing: 5px;
+  text-align: center;
+	margin: 0px 0px 20px 0px;
+  color: #F65C1E;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+.container-img {
+	border-radius: 20px;
+	margin-top: 10px;
+	box-shadow: var(--sb-box-shadow);
+  filter: drop-shadow(16px 16px 20px black);
+}
+.hint {
+  margin-top: 10px;
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #A7FF02; 
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+@media screen and (max-width: 500px) {
+  .container-img {
+    width: 420px !important;
+    height: 400px !important;
+  }
+  .title-principal {
+    font-size: 20px;
+  }
+}
+
+/*-------------------- Boton de redes sociales --------------------*/
+.container-button{
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+}
+.button-main{
+  display: none;
+}
+.redes a, .button-secondary label, .redes input {
+  display: block;
+  text-decoration: none;
+  background: #000;
+  color: #fff;
+  width: 1.875rem;
+  height: 1.875rem;
+  line-height: 1.875rem;
+  text-align: center;
+  border-radius: 50%;
+  transition: all 500ms ease;
+}
+.redes a, .redes input{
+  margin-bottom: -0.938rem;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 0.75rem;
+}
+.redes a:hover{
+  background: #00FF2E;
+  color: #000;
+}
+.button-main:checked~ .redes a{
+  margin-bottom: 0.625rem;
+  opacity: 1;
+  visibility: visible;
+}
+/* ~ selecciona el ítem que 
+esté inmediatamente después 
+y todos los siguientes*/
+.button-secondary label{
+  cursor: pointer;
+  background: #000;
+  font-size: 1.25rem;
+}
+.button-main:checked~ .button-secondary label{
+  transform: rotate(135deg);
+  font-size: 1.25rem;
+}
+/*-------------------- Fin de Boton de redes sociales --------------------*/
+
+/* -------------------- PopUp - Bitácora -------------------- */
+.modal-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;  
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.show {
+  pointer-events: auto;
+  opacity: 1;
+}
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 37.5rem;
+  max-width: 100%;
+  padding: 1.875rem 1.875rem;
+  margin: 0.625rem;
+  border-radius: 0.625rem;
+  background: #131319;
+  box-shadow: -5px -5px 10px -4px rgba(255, 255, 255, 0.05),
+                    5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+.modal h1 {
+  margin: 0.125rem;
+  font-weight: 500;
+  letter-spacing: 0.063rem;
+  color: #03a9f4;
+}
+.modal p {
+  font-size: 0.875rem;
+  text-align: justify;
+  line-height: 1.375rem;
+  color: #fff;
+  opacity: 0.8;
+  font-weight: 500;
+}
+.modal span {
+  font-size: 0.75rem;
+  color: #EC1B1B;
+  margin-top: 0.125rem;
+  font-weight: 900;
+}
+.modal .boton-popup {
+  position: absolute;
+  top: 0.313rem;
+  right: 0.625rem;
+  padding: 0.125rem 0.438rem;
+  z-index: 300;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.875rem;
+  border: 0;
+  border-radius: 6.25rem;
+  color: #000;
+  background: #2C2C35;
+  box-shadow: -5px -5px 10px rgb(255 255 255 / 5%), 5px 5px 15px rgb(0 0 0 / 50%);
+}
+.modal .boton-popup:hover:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  background: #000;
+  box-shadow: inset -3px -3px 7px #000,
+              inset 3px 3px 5px #000;
+  z-index: 250;
+  border-radius: 6.25rem;
+  opacity: 0.2;
+}
+/* -------------------- Fin del PopUp - Bitácora -------------------- */
